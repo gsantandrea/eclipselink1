@@ -1,10 +1,13 @@
 package de.vogella.jpa.simple.model;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Data
 @Entity
 public class Todo {
     @Id
@@ -12,27 +15,5 @@ public class Todo {
     private Long id;
     private String summary;
     private String description;
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Todo [summary=" + summary + ", description=" + description
-                + "]";
-    }
 
 }
