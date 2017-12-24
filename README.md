@@ -1,4 +1,4 @@
-##Esempio EclipseLink JPA
+# Esempio EclipseLink JPA
 
 Eseguire il comando:
 
