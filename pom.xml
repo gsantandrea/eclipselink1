@@ -12,22 +12,26 @@
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.10.2.0</version>
+            <version>10.12.1.1</version>
             <scope>compile</scope>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.eclipse.persistence</groupId>-->
-            <!--<artifactId>eclipselink</artifactId>-->
-            <!--<version>2.7.0</version>-->
-            <!--<scope>compile</scope>-->
-        <!--</dependency>-->
+
+        <!--
+        A causa di un bug (eclipselink.jar non è signed, mentre jpa si) non si può usare la combinazione
+            "javax.persistence" % "javax.persistence-api" % "2.2"
+            "org.eclipse.persistence" % "eclipselink" % "2.7.0"
+        tuttavia e' sufficiente usare org.eclipse.persistence.jpa
+        (https://bugs.eclipse.org/bugs/show_bug.cgi?id=525457#c3)
+        -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa</artifactId>
             <version>2.7.0</version>
             <scope>compile</scope>
         </dependency>
+
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
