@@ -3,10 +3,13 @@ package de.vogella.jpa.eclipselink.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -23,7 +26,7 @@ public class Person {
 
     private String nonsenseField = "";
 
-    private List<Job> jobList = new ArrayList<Job>();
+    private List<Job> jobList = new ArrayList<>();
 
     public String getId() {
         return id;

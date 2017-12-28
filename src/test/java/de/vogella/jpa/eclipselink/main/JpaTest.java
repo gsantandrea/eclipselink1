@@ -7,11 +7,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import de.vogella.jpa.eclipselink.model.Job;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.vogella.jpa.eclipselink.model.Family;
 import de.vogella.jpa.eclipselink.model.Person;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JpaTest {
 
@@ -43,12 +48,34 @@ public class JpaTest {
                 Person person = new Person();
                 person.setFirstName("Jim_" + i);
                 person.setLastName("Knopf_" + i);
+                if(i==12){
+                    Job job1 = new Job();
+                    job1.setJobDescr("Lavandaio");
+                    job1.setSalery(111);
+                    em.persist(job1);
+
+                    Job job2 = new Job();
+                    job2.setJobDescr("Muratore");
+                    job2.setSalery(222);
+                    em.persist(job2);
+
+                    List<Job> jobs = new ArrayList<>();
+                    jobs.add(job1);
+                    jobs.add(job2);
+                    person.setJobList(jobs);
+                    em.persist(person);
+                }
+
                 em.persist(person);
                 // now persists the family person relationship
                 family.getMembers().add(person);
                 em.persist(person);
                 em.persist(family);
+
+
             }
+
+
         }
 
         // Commit the transaction, which will cause the entity to
@@ -90,6 +117,7 @@ public class JpaTest {
         em.close();
     }
 
+    @Ignore
     @Test(expected = javax.persistence.NoResultException.class)
     public void deletePerson() {
         EntityManager em = factory.createEntityManager();
